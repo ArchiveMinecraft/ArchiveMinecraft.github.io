@@ -10,6 +10,17 @@
       padding: 0;
     }
 
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
     header {
       text-align: center;
       background-color: #333;
@@ -28,36 +39,54 @@
       padding: 20px;
     }
 
-    .button {
-      display: block;
-      margin: 10px auto;
-      padding: 15px 30px;
-      width: 100%;
-      font-size: 18px;
-      background-color: #4a90e2;
-      color: #fff;
-      border: none;
+    .card {
+      background-color: #fff;
       border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .button:hover {
-      background-color: #388de7;
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: #555;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#" onclick="history.back()">Go Back</a>
+    <a href="index.html">Home</a>
+  </nav>
   <header>
     <h1>Archive Minecraft</h1>
   </header>
   <div class="container">
-    <button class="button" onclick="window.location.href='farm_designers.html'">Farm Designers &amp; Youtuber Designers</button>
-    <button class="button" onclick="window.location.href='mob_farming.html'">Mob Farming</button>
-    <button class="button" onclick="window.location.href='other_farming.html'">Other Farming</button>
-    <button class="button" onclick="window.location.href='other_contraptions.html'">Other Contraptions</button>
-    <button class="button" onclick="window.location.href='not_contraptions.html'">Not Contraptions</button>
-    <button class="button" onclick="window.location.href='help.html'">Help</button>
+    <div class="card" onclick="window.location.href='aboutncolyer.html'">
+      <img src="https://cdn.discordapp.com/avatars/460277745264492544/2f5ba01dea88342165d69596b27321c4.webp?size=240" alt="Ncolyer Profile Picture">
+      <h2 class="card-title">Ncolyer</h2>
+      <p class="card-description">I'm a Minecraft farm designer specializing in nether tree farms and innovative designs. I push boundaries, optimize efficiency with research and math, and inspire others to innovate in the game.</p>
+    </div>
+    <div class="card">
+      <!-- Add more cards for other farm designers as needed -->
+    </div>
   </div>
 </body>
 </html>
