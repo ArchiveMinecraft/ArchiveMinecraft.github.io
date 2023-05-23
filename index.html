@@ -11,47 +11,81 @@
     }
 
     header {
-      text-align: center;
       background-color: #333;
       padding: 20px;
       color: #fff;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 40px;
     }
 
-    .button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      text-align: center;
-      background-color: black;
-      color: white;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 24px;
+    }
+
+    .nav-options {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-option {
+      margin-left: 20px;
       font-size: 16px;
-      margin-bottom: 10px;
+    }
+
+    .nav-option:last-child {
+      margin-right: 0;
+    }
+
+    .nav-option a {
       text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .nav-option a:hover {
+      color: #ccc;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Archive Minecraft</h1>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-brand">
+          Archive Minecraft
+        </div>
+        <ul class="nav-options">
+          <li class="nav-option">
+            <a href="#">Home</a>
+          </li>
+          <li class="nav-option">
+            <a href="#">About</a>
+          </li>
+          <li class="nav-option">
+            <a href="#">Contact</a>
+          </li>
+          <li class="nav-option">
+            <a href="enchant_order.html">Enchant Order</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <div class="container">
-    <a href="farm_designers.html" class="button">Designers</a>
-    <a href="mob_farming.html" class="button">Mob Farming</a>
-    <a href="other_farming.html" class="button">Other Farming</a>
-    <a href="other_contraptions.html" class="button">Other Contraptions</a>
-    <a href="not_contraptions.html" class="button">Not Contraptions</a>
-    <a href="help.html" class="button">Help</a>
+    <!-- Your page content goes here -->
   </div>
 </body>
 </html>
