@@ -1,140 +1,152 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8">
-    <title>Simple Calculator using HTML, CSS and JavaScript</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Chat Box Calculator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-        .calculator {
-            padding: 10px;
-            border-radius: 1em;
-            height: 380px;
+        /* CSS styles */
+        .chatbox {
             width: 400px;
             margin: auto;
-            background-color: #191b28;
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        }
-
-        .display-box {
-            font-family: 'Orbitron', sans-serif;
-            background-color: #dcdbe1;
-            border: solid black 0.5px;
-            color: black;
+            padding: 20px;
+            background-color: #f5f5f5;
             border-radius: 5px;
-            width: 100%;
-            height: 65%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
         }
 
-        #btn {
-            background-color: #fb0066;
+        .chatbox-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
-        input[type=button] {
-            font-family: 'Orbitron', sans-serif;
-            background-color: #64278f;
-            color: white;
-            border: solid black 0.5px;
-            width: 100%;
+        .chatbox-content {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
             border-radius: 5px;
-            height: 70%;
+        }
+
+        .chatbox-message {
+            margin-bottom: 10px;
+        }
+
+        .chatbox-message-user {
+            text-align: right;
+        }
+
+        .chatbox-message-bot {
+            text-align: left;
+        }
+
+        .chatbox-input {
+            margin-top: 10px;
+        }
+
+        .chatbox-input-text {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
             outline: none;
         }
 
-        input:active[type=button] {
-            background: #e5e5e5;
-            -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-            -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-            box-shadow: inset 0px 0px 5px #c1c1c1;
+        .chatbox-input-button {
+            margin-top: 5px;
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
         }
     </style>
 </head>
+
 <body>
-    <table class="calculator">
-        <tr>
-            <td colspan="3">
-                <input class="display-box" type="text" id="result" disabled />
-            </td>
-            <td>
-                <input type="button" value="C" onclick="clearScreen()" id="btn" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" value="1" onclick="display('1')" />
-            </td>
-            <td>
-                <input type="button" value="2" onclick="display('2')" />
-            </td>
-            <td>
-                <input type="button" value="3" onclick="display('3')" />
-            </td>
-            <td>
-                <input type="button" value="/" onclick="display('/')" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" value="4" onclick="display('4')" />
-            </td>
-            <td>
-                <input type="button" value="5" onclick="display('5')" />
-            </td>
-            <td>
-                <input type="button" value="6" onclick="display('6')" />
-            </td>
-            <td>
-                <input type="button" value="-" onclick="display('-')" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" value="7" onclick="display('7')" />
-            </td>
-            <td>
-                <input type="button" value="8" onclick="display('8')" />
-            </td>
-            <td>
-                <input type="button" value="9" onclick="display('9')" />
-            </td>
-            <td>
-                <input type="button" value="+" onclick="display('+')" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" value="." onclick="display('.')" />
-            </td>
-            <td>
-                <input type="button" value="0" onclick="display('0')" />
-            </td>
-            <td>
-                <input type="button" value="=" onclick="calculate()" id="btn" />
-            </td>
-            <td>
-                <input type="button" value="*" onclick="display('*')" />
-            </td>
-        </tr>
-    </table>
+    <div class="chatbox">
+        <div class="chatbox-header">Chat Box Calculator</div>
+        <div class="chatbox-content" id="chatbox-content"></div>
+        <div class="chatbox-input">
+            <input type="text" id="inputMessage" class="chatbox-input-text" placeholder="Type your message..." onkeydown="handleKeyDown(event)" />
+            <button type="button" class="chatbox-input-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <script>
-        // This function clear all the values
-        function clearScreen() {
-            document.getElementById("result").value = "";
+        // JavaScript code
+
+        var questionAnswers = {
+            "hi": "Hello!",
+            "how are you": "I'm fine, thank you!",
+            "what is your name": "I'm Chat Box Calculator",
+            "clear": "The calculator has been cleared",
+            "default": "I'm sorry, I don't understand. Can you please rephrase your question?"
+        };
+
+        function sendMessage() {
+            var input = document.getElementById("inputMessage").value;
+            if (input.trim() !== "") {
+                var message = createMessage(input, true);
+                var content = document.getElementById("chatbox-content");
+                content.appendChild(message);
+                content.scrollTop = content.scrollHeight;
+                processInput(input);
+                document.getElementById("inputMessage").value = "";
+            }
         }
 
-        // This function display values
-        function display(value) {
-            document.getElementById("result").value += value;
+        function handleKeyDown(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendMessage();
+            }
         }
 
-        // This function evaluates the expression and returns result
-        function calculate() {
-            var p = document.getElementById("result").value;
-            var q = eval(p);
-            document.getElementById("result").value = q;
+        function createMessage(text, isUser) {
+            var message = document.createElement("div");
+            message.className = "chatbox-message " + (isUser ? "chatbox-message-user" : "chatbox-message-bot");
+            message.innerText = text;
+            return message;
+        }
+
+        function processInput(input) {
+            var lowercaseInput = input.toLowerCase();
+            var response;
+
+            if (isMathExpression(lowercaseInput)) {
+                response = evaluateExpression(lowercaseInput);
+            } else {
+                response = questionAnswers[lowercaseInput] || questionAnswers["default"];
+            }
+
+            var reply = createMessage(response, false);
+            var content = document.getElementById("chatbox-content");
+            content.appendChild(reply);
+            content.scrollTop = content.scrollHeight;
+        }
+
+        function isMathExpression(input) {
+            var regex = /^[-+x()\/\d\s.]+$/;
+            return regex.test(input);
+        }
+
+        function evaluateExpression(expression) {
+            try {
+                // Replace "x" with "*" for multiplication
+                expression = expression.replace(/x/g, "*");
+                var result = eval(expression);
+                return "The result is: " + result;
+            } catch (error) {
+                return "Invalid expression. Please try again.";
+            }
         }
     </script>
 </body>
+
 </html>
