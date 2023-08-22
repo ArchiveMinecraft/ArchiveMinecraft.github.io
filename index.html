@@ -1,91 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archive Minecraft</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #333;
-      padding: 20px;
-      color: #fff;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-brand {
-      font-size: 24px;
-    }
-
-    .nav-options {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-option {
-      margin-left: 20px;
-      font-size: 16px;
-    }
-
-    .nav-option:last-child {
-      margin-right: 0;
-    }
-
-    .nav-option a {
-      text-decoration: none;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-
-    .nav-option a:hover {
-      color: #ccc;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <div class="discord-layout">
+    <nav class="channels">
+      <a class="channel-button" href="home.html">
+        <div class="channel">Home</div>
+      </a>
+      <a class="channel-button" href="about.html">
+        <div class="channel">About</div>
+      </a>
+      <a class="channel-button" href="calculator.html">
+        <div class="channel">Calculator</div>
+      </a>
+      <a class="channel-button" href="enchantorder.html">
+        <div class="channel">Enchant Order</div>
+      </a>
+    </nav>
     <div class="container">
-      <nav class="nav">
+      <header class="header">
         <div class="nav-brand">
           Archive Minecraft
         </div>
-        <ul class="nav-options">
-          <li class="nav-option">
-            <a href="#">Home</a>
-          </li>
-          <li class="nav-option">
-            <a href="#">About</a>
-          </li>
-          <li class="nav-option">
-            <a href="calculator.html">Calculator</a>
-          </li>
-          <li class="nav-option">
-            <a href="https://archiveminecraft.github.io/Enchant%20Order/enchant_order.html">Enchant Order</a>
-          </li>
-        </ul>
-      </nav>
+      </header>
+      <div class="content left-align-content">
+        <p>Your ultimate hub for everything Minecraft! Explore a treasure trove of guides, tips, and tutorials to enhance your gaming experience. Discover enchanting strategies, redstone wonders, building inspirations, and much more. Join our community and delve into the vast world of Minecraft with expert insights, creative ideas, and technical know-how. Whether you're a casual player or a dedicated enthusiast, we're here to fuel your Minecraft journey.</p>
+        <a class="discord-button" href="https://example.com" target="_blank">Technical Minecraft Discord Servers</a>
+      </div>
     </div>
-  </header>
-  <div class="container">
-    <!-- Your page content goes here -->
   </div>
 </body>
 </html>

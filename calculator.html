@@ -1,152 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Chat Box Calculator</title>
-    <style>
-        /* CSS styles */
-        .chatbox {
-            width: 400px;
-            margin: auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
-        }
-
-        .chatbox-header {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .chatbox-content {
-            height: 300px;
-            overflow-y: scroll;
-            padding: 10px;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-        }
-
-        .chatbox-message {
-            margin-bottom: 10px;
-        }
-
-        .chatbox-message-user {
-            text-align: right;
-        }
-
-        .chatbox-message-bot {
-            text-align: left;
-        }
-
-        .chatbox-input {
-            margin-top: 10px;
-        }
-
-        .chatbox-input-text {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .chatbox-input-button {
-            margin-top: 5px;
-            padding: 5px 10px;
-            background-color: #4caf50;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            outline: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="chatbox">
-        <div class="chatbox-header">Chat Box Calculator</div>
-        <div class="chatbox-content" id="chatbox-content"></div>
-        <div class="chatbox-input">
-            <input type="text" id="inputMessage" class="chatbox-input-text" placeholder="Type your message..." onkeydown="handleKeyDown(event)" />
-            <button type="button" class="chatbox-input-button" onclick="sendMessage()">Send</button>
-        </div>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="number" onclick="appendNumber('7')">7</button>
+      <button class="number" onclick="appendNumber('8')">8</button>
+      <button class="number" onclick="appendNumber('9')">9</button>
+      <button class="operator" onclick="appendOperator('+')">+</button>
+      <button class="number" onclick="appendNumber('4')">4</button>
+      <button class="number" onclick="appendNumber('5')">5</button>
+      <button class="number" onclick="appendNumber('6')">6</button>
+      <button class="operator" onclick="appendOperator('-')">-</button>
+      <button class="number" onclick="appendNumber('1')">1</button>
+      <button class="number" onclick="appendNumber('2')">2</button>
+      <button class="number" onclick="appendNumber('3')">3</button>
+      <button class="operator" onclick="appendOperator('*')">*</button>
+      <button class="number" onclick="appendNumber('0')">0</button>
+      <button class="operator" onclick="clearDisplay()">C</button>
+      <button class="operator" onclick="calculate()">=</button>
+      <button class="operator" onclick="appendOperator('/')">/</button>
     </div>
-
-    <script>
-        // JavaScript code
-
-        var questionAnswers = {
-            "hi": "Hello!",
-            "how are you": "I'm fine, thank you!",
-            "what is your name": "I'm Chat Box Calculator",
-            "clear": "The calculator has been cleared",
-            "default": "I'm sorry, I don't understand. Can you please rephrase your question?"
-        };
-
-        function sendMessage() {
-            var input = document.getElementById("inputMessage").value;
-            if (input.trim() !== "") {
-                var message = createMessage(input, true);
-                var content = document.getElementById("chatbox-content");
-                content.appendChild(message);
-                content.scrollTop = content.scrollHeight;
-                processInput(input);
-                document.getElementById("inputMessage").value = "";
-            }
-        }
-
-        function handleKeyDown(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                sendMessage();
-            }
-        }
-
-        function createMessage(text, isUser) {
-            var message = document.createElement("div");
-            message.className = "chatbox-message " + (isUser ? "chatbox-message-user" : "chatbox-message-bot");
-            message.innerText = text;
-            return message;
-        }
-
-        function processInput(input) {
-            var lowercaseInput = input.toLowerCase();
-            var response;
-
-            if (isMathExpression(lowercaseInput)) {
-                response = evaluateExpression(lowercaseInput);
-            } else {
-                response = questionAnswers[lowercaseInput] || questionAnswers["default"];
-            }
-
-            var reply = createMessage(response, false);
-            var content = document.getElementById("chatbox-content");
-            content.appendChild(reply);
-            content.scrollTop = content.scrollHeight;
-        }
-
-        function isMathExpression(input) {
-            var regex = /^[-+x()\/\d\s.]+$/;
-            return regex.test(input);
-        }
-
-        function evaluateExpression(expression) {
-            try {
-                // Replace "x" with "*" for multiplication
-                expression = expression.replace(/x/g, "*");
-                var result = eval(expression);
-                return "The result is: " + result;
-            } catch (error) {
-                return "Invalid expression. Please try again.";
-            }
-        }
-    </script>
+  </div>
+  <script src="script.js"></script>
 </body>
-
 </html>

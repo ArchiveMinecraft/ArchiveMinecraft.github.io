@@ -1,0 +1,198 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #23272A; /* Not Quite Black */
+  color: #FFFFFF; /* White */
+  margin: 0;
+}
+
+/* Discord layout */
+.discord-layout {
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+}
+
+/* Discord channel sidebar */
+.channels {
+  background-color: #2C2F33; /* Black */
+  width: 250px;
+  padding: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.channel {
+  padding: 10px 15px;
+  color: #FFFFFF; /* White */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.channel:hover {
+  background-color: #333333; /* Dark Gray */
+}
+
+/* Container with header and content */
+.container {
+  background-color: #2C2F33; /* Black */
+  padding: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section */
+.header {
+  background-color: #5865F2; /* Blurple */
+  color: #FFFFFF; /* White */
+  padding: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center; /* Center the title text */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+/* Additional styles for page content */
+.content {
+  margin-top: 20px; /* Add margin at the top */
+  text-align: center;
+}
+
+.left-align-content {
+  text-align: left; /* Align content to the left */
+}
+
+.container p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Discord button styles */
+.discord-button {
+  display: inline-block;
+  padding: 8px 16px; /* Adjust the padding to make the button shorter */
+  background-color: #5865F2; /* Blurple */
+  color: #FFFFFF; /* White */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Add margin at the top */
+  margin-left: 0; /* Move the button to the left */
+}
+
+.discord-button:hover {
+  background-color: #99AAB5; /* Gray */
+}
+
+/* Remove underline from anchor tags */
+.channel-button {
+  text-decoration: none;
+}
+
+/* Enchantment Ordering Tool */
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2C2F33; /* Black */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Styling for select dropdown */
+#left select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3A3D41; /* Dark Gray */
+  color: #FFFFFF; /* White */
+  font-size: 16px;
+}
+
+/* Calculate button */
+#calculate {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #5865F2; /* Blurple */
+  color: #FFFFFF; /* White */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#calculate:hover {
+  background-color: #99AAB5; /* Gray */
+}
+
+/* Styling for progress, solution, error, and phone warning sections */
+#progress, #solution, #error, #phone-warn {
+  display: none;
+  margin-top: 10px;
+  background-color: #36393E; /* Slightly Darker Gray */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
+}
+
+/* Styling for enchantment groups */
+.enchant-group {
+  background-color: #2C2F33; /* Black */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
+}
+
+/* Add a background color to selected options */
+.selectItem .selected {
+  background-color: #5865F2; /* Blurple */
+  color: #FFFFFF; /* White */
+}
+
+/* Add a background color to selected groups */
+.enchant-group.selected {
+  background-color: #5865F2; /* Blurple */
+}
+
+/* Footer section */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  background-color: #2C2F33; /* Black */
+  border-radius: 5px;
+}
+
+.footer a {
+  color: #5865F2; /* Blurple */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
