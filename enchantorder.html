@@ -61,7 +61,7 @@
               </p>
             </div>
             <p>
-              <button id="calculate">Calculate &raquo;</button>
+              <button id="calculate" class="discord-button">Calculate &raquo;</button>
             </p>
           </div>
         </div>
@@ -94,27 +94,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const selectItem = document.querySelector(".selectItem");
-
-      // Add click event listener to options
-      selectItem.addEventListener("click", function (event) {
-        const clickedOption = event.target;
-        if (clickedOption.tagName === "OPTION") {
-          // Remove "selected" class from all options
-          const options = selectItem.querySelectorAll("option");
-          options.forEach(function (option) {
-            option.classList.remove("selected");
-          });
-
-          // Add "selected" class to clicked option
-          clickedOption.classList.add("selected");
-        }
-      });
-    });
-  </script>
-
 </body>
 </html>
